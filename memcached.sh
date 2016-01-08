@@ -8,3 +8,8 @@ git checkout -b php7 origin/php7
 ./configure --with-php-config=/usr/local/php7/bin/php-config
 make
 sudo make install
+
+echo "
+
+# Memcached
+extension=memcached.so" >> /usr/local/php7/etc/conf.d/modules.ini
