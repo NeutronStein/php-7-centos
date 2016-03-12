@@ -4,8 +4,8 @@ This repo is created from [php-7-debian](https://github.com/kasparsd/php-7-debia
 
 These are a set of bash scripts for building and running PHP 7 (CLI and FPM) on Debian based Linux distributions:
 
-- `build.sh` installs the necessary build dependencies and the latest development version of PHP with CLI and FPM server APIs (SAPI) from the `PHP-7.0.3` branch of https://github.com/php/php-src
- 
+- `build.sh` installs the necessary build dependencies and the latest development version of PHP with CLI and FPM server APIs (SAPI) from the `PHP-7.0.4` branch of https://github.com/php/php-src
+
 - `install.sh` sets up PHP-FPM by moving configuration files into their correct locations in `/usr/local/php7` and enables the `php7-fpm` service and adds it to the startup sequence.
 
 Please note that these are very simple scripts that don't implement error checking or process validation.
@@ -14,12 +14,12 @@ Please note that these are very simple scripts that don't implement error checki
 ## Usage
 
 	$ git clone https://github.com/ChiVincent/php-7-centos.git
-	$ cd php-7-debian
+	$ cd php-7-centos
 	$ ./build.sh
 	$ ./install.sh
 
 The PHP-FPM can be operated using the `php7-fpm` init script:
-	
+
 	Usage: sudo systemctl {start|stop|status|restart} php7-fpm
 
 while the FPM socket is available at
@@ -27,9 +27,9 @@ while the FPM socket is available at
 	127.0.0.1:9007
 
 and PHP CLI:
-	
+
 	$ /usr/local/php7/bin/php -v
-	PHP 7.0.3 (cli) (built: Feb  6 2016 11:53:57) ( NTS )
+	PHP 7.0.4 (cli) (built: Mar  5 2016 14:52:07) ( NTS )
 	Copyright (c) 1997-2016 The PHP Group
 	Zend Engine v3.0.0, Copyright (c) 1998-2016 Zend Technologies
     	with Zend OPcache v7.0.6-dev, Copyright (c) 1999-2016, by Zend Technologies
@@ -37,7 +37,7 @@ and PHP CLI:
 ## Configuration files
 
 All PHP configuration files are stored under `/usr/local/php7`:
-	
+
 	/usr/local/php7/lib/php.ini
 	/usr/local/php7/etc/php-fpm.conf
 	/usr/local/php7/etc/php-fpm.d/www.conf
@@ -117,7 +117,7 @@ Note that most of the third-party PHP extensions are [not yet compatible with PH
 [Memcached extension for PHP](https://github.com/php-memcached-dev/php-memcached) already supports PHP 7. First you install the dependencies:
 
 	$ sudo yum install -y libmemcached-devel
-	
+
 and then build and install the extension:
 
 	$ git clone https://github.com/php-memcached-dev/php-memcached
@@ -133,7 +133,7 @@ and then append `extension=memcached.so` to `/usr/local/php7/etc/conf.d/modules.
 
 	# Zend OPcache
 	zend_extension=opcache.so
-	
+
 	# Memcached
 	extension=memcached.so
 
@@ -141,4 +141,4 @@ and then append `extension=memcached.so` to `/usr/local/php7/etc/conf.d/modules.
 ## Credits
 
 - Created by [Kaspars Dambis](http://kaspars.net)
-- Based on [`php7.sh`](https://gist.github.com/tvlooy/953a7c0658e70b573ab4) by [Tom Van Looy](http://www.intracto.com/nl/blog/running-symfony2-on-php7) 
+- Based on [`php7.sh`](https://gist.github.com/tvlooy/953a7c0658e70b573ab4) by [Tom Van Looy](http://www.intracto.com/nl/blog/running-symfony2-on-php7)
